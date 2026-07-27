@@ -30,3 +30,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Fade-in animation when sections appear
+    const sections = document.querySelectorAll(".section");
+
+    const observer = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+
+        });
+
+    }, {
+        threshold: 0.15
+    });
+
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+
+    // Simple contact button message
+    const contactButton = document.querySelector(".contact-btn");
+
+    if (contactButton) {
+
+        contactButton.addEventListener("click", function () {
+
+            alert(
+                "Thank you for contacting SecureStandard Advisory. We will get back to you soon."
+            );
+
+        });
+
+    }
+
+});
